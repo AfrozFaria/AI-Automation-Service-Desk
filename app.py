@@ -1,19 +1,23 @@
+import os
 from pathlib import Path
 import pandas as pd
 import streamlit as st
 import db, pipeline, support, advisor
-import os
+
 st.set_page_config(page_title="AI & Automation Service Desk", page_icon="🛠️", layout="wide")
+
 pw = os.environ.get("APP_PASSWORD")
 if pw and st.text_input("Password", type="password") != pw:
     st.stop()
+
+db.seed_if_empty()
+
 st.title("🛠️ AI & Automation Service Desk")
 st.caption("Synthetic demo: support, discovery, delivery and continuous improvement for AI and process automation.")
 
 tab_support, tab_adv, tab_claims, tab_metrics = st.tabs(
     ["💬 AI Support", "🔍 Automation Advisor", "📨 Claims automation", "📈 Service metrics"])
 
-# ---------------- AI Support ----------------
 with tab_support:
     st.subheader("Ask the AI Support Desk")
     q = st.text_input("Question", placeholder="e.g. Can I paste a customer's policy number into a public AI tool?")
@@ -34,7 +38,6 @@ with tab_support:
             db.set_feedback(rec["id"], "down")
             st.toast("Thanks, this helps improve the knowledge base")
 
-# ---------------- Automation Advisor ----------------
 with tab_adv:
     st.subheader("Describe a manual process")
     ex = st.selectbox("Load an example", ["(write your own)"] + list(advisor.EXAMPLES))
@@ -74,8 +77,9 @@ with tab_claims:
                 pipeline.process(p)
                 bar.progress((i + 1) / len(files))
         st.rerun()
-    if b2.button("Reset demo data"):
+    if b2.button("Reset to sample data"):
         db.reset()
+        db.seed_if_empty()
         st.rerun()
 
     claims = db.all_claims()
@@ -109,10 +113,11 @@ with tab_claims:
             if a1.button("Approve", key=f"a{pick['id']}"):
                 db.set_status(pick["id"], "approved", text)
                 st.rerun()
-            if a2.button(" Reject", key=f"r{pick['id']}"):
+            if a2.button("Reject", key=f"r{pick['id']}"):
                 db.set_status(pick["id"], "rejected", text)
                 st.rerun()
             st.caption(f"Status: {pick['status']}")
+
 
 with tab_metrics:
     sup = pd.DataFrame(db.all_support())

@@ -1,5 +1,6 @@
 import json, sqlite3
 from datetime import datetime
+from pathlib import Path
 
 DB = "claims.db"
 
@@ -95,3 +96,35 @@ def reset():
     with conn() as con:
         for t in ("claims", "support_log", "requests"):
             con.execute(f"DELETE FROM {t}")
+
+def seed_if_empty(path="data/seed.json"):
+    p = Path(path)
+    if not p.exists():
+        return
+    with conn() as con:
+        n = sum(con.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+                for t in ("claims", "support_log", "requests"))
+    if n:
+        return
+    seed = json.loads(p.read_text(encoding="utf-8"))
+    with conn() as con:
+        for c in seed["claims"]:
+            con.execute(
+                """INSERT INTO claims(source_file, created_at, policy_number, incident_date,
+                   claim_json, trace_json, action, reasons_json, payout, draft, status)
+                   VALUES(?,?,?,?,?,?,?,?,?,?,?)""",
+                (c["source_file"], c["created_at"], c["policy_number"], c["incident_date"],
+                 json.dumps(c["claim"]), json.dumps(c["trace"]), c["action"],
+                 json.dumps(c["reasons"]), c["payout"], c["draft"], c["status"]))
+        for s in seed["support"]:
+            con.execute(
+                """INSERT INTO support_log(created_at, question, answer, sources_json,
+                   escalated, top_score, feedback) VALUES(?,?,?,?,?,?,?)""",
+                (s["created_at"], s["question"], s["answer"], s["sources_json"],
+                 s["escalated"], s["top_score"], s["feedback"]))
+        for r in seed["requests"]:
+            con.execute(
+                """INSERT INTO requests(created_at, title, description, assessment_json,
+                   manual_hours, priority, priority_label) VALUES(?,?,?,?,?,?,?)""",
+                (r["created_at"], r["title"], r["description"], json.dumps(r["assessment"]),
+                 r["manual_hours"], r["priority"], r["priority_label"]))

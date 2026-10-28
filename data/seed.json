@@ -1,0 +1,815 @@
+{
+ "claims": [
+  {
+   "id": 58,
+   "source_file": "claim1.txt",
+   "created_at": "2026-10-28T12:25:35",
+   "policy_number": "LT-482913",
+   "incident_date": "2026-10-12",
+   "action": "standard_queue",
+   "payout": 1550.0,
+   "draft": "Subject: Acknowledgment of Your Claim Submission\n\nDear Mika Virtanen,\n\nThank you for submitting your vehicle claim. We have received your claim and it is currently under review. \n\nOur team will be in touch with you shortly to provide further updates. \n\nIf you have any questions in the meantime, please feel free to reach out.\n\nBest regards,\n\nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "vehicle",
+    "customer_name": "Mika Virtanen",
+    "policy_number": "LT-482913",
+    "incident_date": "2026-10-12",
+    "estimated_amount_eur": 1850.0,
+    "description": "Someone hit my parked car. The rear bumper is damaged.",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-482913"
+     },
+     "result": {
+      "holder": "Mika Virtanen",
+      "active": true,
+      "covers": [
+       "vehicle"
+      ],
+      "deductible": 300,
+      "coverage_limit": 20000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-482913",
+      "incident_date": "2026-10-12"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "All checks passed"
+   ]
+  },
+  {
+   "id": 59,
+   "source_file": "claim2.txt",
+   "created_at": "2026-10-28T12:25:40",
+   "policy_number": "LT-771204",
+   "incident_date": "2026-10-20",
+   "action": "senior_review",
+   "payout": 13500.0,
+   "draft": "Subject: Acknowledgment of Your Home Insurance Claim\n\nDear Aino Laine,\n\nThank you for submitting your home insurance claim. We have received your claim and it is currently under review.\n\nOur team will carefully assess the details provided, and you will be contacted shortly with further information.\n\nIf you have any questions in the meantime, please feel free to reach out.\n\nBest regards,\n\nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "home",
+    "customer_name": "Aino Laine",
+    "policy_number": "LT-771204",
+    "incident_date": "2026-10-20",
+    "estimated_amount_eur": 14000.0,
+    "description": "A pipe burst causing flooding in the kitchen and living room.",
+    "urgency": "high",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-771204"
+     },
+     "result": {
+      "holder": "Aino Laine",
+      "active": true,
+      "covers": [
+       "home"
+      ],
+      "deductible": 500,
+      "coverage_limit": 100000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-771204",
+      "incident_date": "2026-10-20"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "Amount above EUR 5000",
+    "High urgency"
+   ]
+  },
+  {
+   "id": 60,
+   "source_file": "claim3.txt",
+   "created_at": "2026-10-28T12:25:44",
+   "policy_number": null,
+   "incident_date": "2023-10-01",
+   "action": "request_more_info",
+   "payout": null,
+   "draft": "Subject: Request for Additional Information Regarding Your Claim\n\nDear Customer,\n\nThank you for reaching out to us regarding your theft claim. To assist you further, we kindly ask you to provide the following missing information:\n\n- Customer Name\n- Policy Number\n- Estimated Amount (in EUR)\n\nOnce we receive this information, we will be able to proceed with your claim. If you have any questions or need assistance, please feel free to reach out.\n\nThank you for your cooperation.\n\nBest regards,  \nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "theft",
+    "customer_name": null,
+    "policy_number": null,
+    "incident_date": "2023-10-01",
+    "estimated_amount_eur": null,
+    "description": "My bike was stolen last week.",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [],
+   "reasons": [
+    "Missing: customer_name, policy_number, estimated_amount_eur"
+   ]
+  },
+  {
+   "id": 61,
+   "source_file": "claim4.txt",
+   "created_at": "2026-10-28T12:25:49",
+   "policy_number": "LT-482913",
+   "incident_date": "2026-10-05",
+   "action": "manual_review",
+   "payout": null,
+   "draft": "Subject: Acknowledgment of Your Claim Submission\n\nDear Mika Virtanen,\n\nThank you for submitting your vehicle claim. We acknowledge receipt of your claim and want to assure you that it will be reviewed thoroughly.\n\nOur team will be in touch with you shortly regarding the next steps. If you have any questions in the meantime, please feel free to reach out.\n\nBest regards,\n\nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "vehicle",
+    "customer_name": "Mika Virtanen",
+    "policy_number": "LT-482913",
+    "incident_date": "2026-10-05",
+    "estimated_amount_eur": 900.0,
+    "description": "Scratch on my car door",
+    "urgency": "medium",
+    "injection_suspected": true
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-482913"
+     },
+     "result": {
+      "holder": "Mika Virtanen",
+      "active": true,
+      "covers": [
+       "vehicle"
+      ],
+      "deductible": 300,
+      "coverage_limit": 20000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-482913",
+      "incident_date": "2026-10-05"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "Email contains instructions aimed at the system (possible prompt injection)"
+   ]
+  },
+  {
+   "id": 62,
+   "source_file": "claim5.txt",
+   "created_at": "2026-10-28T12:25:54",
+   "policy_number": "LT-300811",
+   "incident_date": "2026-10-12",
+   "action": "standard_queue",
+   "payout": 550.0,
+   "draft": "Aihe: Vahinkoilmoituksen vastaanotto\n\nHyvä Sanna Koskinen,\n\nKiitos vahinkoilmoituksesi lähettämisestä. Olemme vastaanottaneet ilmoituksesi varkaudesta, ja se tulee käsittelyyn. \n\nOlemme yhteydessä sinuun pian lisätietojen ja seuraavien vaiheiden osalta.\n\nYstävällisin terveisin,  \nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "fi",
+    "claim_type": "theft",
+    "customer_name": "Sanna Koskinen",
+    "policy_number": "LT-300811",
+    "incident_date": "2026-10-12",
+    "estimated_amount_eur": 650.0,
+    "description": "Polkupyöräni varastettiin pihasta",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-300811"
+     },
+     "result": {
+      "holder": "Sanna Koskinen",
+      "active": true,
+      "covers": [
+       "home",
+       "theft"
+      ],
+      "deductible": 100,
+      "coverage_limit": 5000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-300811",
+      "incident_date": "2026-10-12"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "All checks passed"
+   ]
+  },
+  {
+   "id": 63,
+   "source_file": "claim6.txt",
+   "created_at": "2026-10-28T12:25:58",
+   "policy_number": "LT-100555",
+   "incident_date": "2026-10-08",
+   "action": "policy_issue",
+   "payout": null,
+   "draft": "Subject: Acknowledgment of Your Claim Submission\n\nDear Mr. Nieminen,\n\nThank you for submitting your vehicle claim. We acknowledge receipt of your claim and want to assure you that it will be reviewed thoroughly.\n\nOur team will be in touch with you shortly regarding the next steps in the process. If you have any questions in the meantime, please feel free to reach out.\n\nBest regards,\n\nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "vehicle",
+    "customer_name": "Jukka Nieminen",
+    "policy_number": "LT-100555",
+    "incident_date": "2026-10-08",
+    "estimated_amount_eur": 700.0,
+    "description": "I scraped a pole while parking.",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-100555"
+     },
+     "result": {
+      "holder": "Jukka Nieminen",
+      "active": false,
+      "covers": [
+       "vehicle"
+      ],
+      "deductible": 300,
+      "coverage_limit": 20000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-100555",
+      "incident_date": "2026-10-08"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "Policy is not active"
+   ]
+  },
+  {
+   "id": 64,
+   "source_file": "claim7.txt",
+   "created_at": "2026-10-28T12:26:03",
+   "policy_number": "LT-482913",
+   "incident_date": "2026-10-12",
+   "action": "fraud_review",
+   "payout": null,
+   "draft": "Subject: Acknowledgment of Your Claim Submission\n\nDear Mika Virtanen,\n\nThank you for submitting your vehicle claim. We have received your information and will begin the review process shortly.\n\nOur team will reach out to you if we require any further details or to provide updates on your claim.\n\nWe appreciate your patience during this time.\n\nBest regards,\n\nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "vehicle",
+    "customer_name": "Mika Virtanen",
+    "policy_number": "LT-482913",
+    "incident_date": "2026-10-12",
+    "estimated_amount_eur": 1850.0,
+    "description": "damage from rear bumper",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-482913"
+     },
+     "result": {
+      "holder": "Mika Virtanen",
+      "active": true,
+      "covers": [
+       "vehicle"
+      ],
+      "deductible": 300,
+      "coverage_limit": 20000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-482913",
+      "incident_date": "2026-10-12"
+     },
+     "result": {
+      "duplicates": [
+       "claim1.txt"
+      ]
+     }
+    }
+   ],
+   "reasons": [
+    "Possible duplicate of: claim1.txt"
+   ]
+  },
+  {
+   "id": 65,
+   "source_file": "claim8.txt",
+   "created_at": "2026-10-28T12:26:08",
+   "policy_number": "LT-771204",
+   "incident_date": "2026-10-20",
+   "action": "fraud_review",
+   "payout": null,
+   "draft": "Aihe: Vahinkoilmoituksen vastaanotto\n\nHyvä Aino Laine,\n\nKiitos vahinkoilmoituksestasi. Olemme vastaanottaneet sen ja se tulee käsittelyyn. Otamme sinuun yhteyttä pian lisätietojen ja seuraavien vaiheiden osalta.\n\nJos sinulla on kysyttävää, älä epäröi ottaa meihin yhteyttä.\n\nYstävällisin terveisin,  \nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "fi",
+    "claim_type": "home",
+    "customer_name": "Aino Laine",
+    "policy_number": "LT-771204",
+    "incident_date": "2026-10-20",
+    "estimated_amount_eur": 14000.0,
+    "description": "Keittiön vesiputki hajosi ja lattia kastui.",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-771204"
+     },
+     "result": {
+      "holder": "Aino Laine",
+      "active": true,
+      "covers": [
+       "home"
+      ],
+      "deductible": 500,
+      "coverage_limit": 100000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-771204",
+      "incident_date": "2026-10-20"
+     },
+     "result": {
+      "duplicates": [
+       "claim2.txt"
+      ]
+     }
+    }
+   ],
+   "reasons": [
+    "Possible duplicate of: claim2.txt"
+   ]
+  },
+  {
+   "id": 66,
+   "source_file": "claim9.txt",
+   "created_at": "2026-10-28T12:26:13",
+   "policy_number": "LT-300811",
+   "incident_date": "2026-10-15",
+   "action": "senior_review",
+   "payout": 5000.0,
+   "draft": "Subject: Acknowledgment of Your Home Insurance Claim\n\nDear Sanna Koskinen,\n\nThank you for submitting your home insurance claim. We have received your claim and it is currently under review.\n\nOur team will carefully assess the details provided and you will be contacted shortly regarding the next steps.\n\nIf you have any questions in the meantime, please feel free to reach out.\n\nBest regards,\n\nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "home",
+    "customer_name": "Sanna Koskinen",
+    "policy_number": "LT-300811",
+    "incident_date": "2026-10-15",
+    "estimated_amount_eur": 8000.0,
+    "description": "A small kitchen fire damaged the cabinets and the wall.",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-300811"
+     },
+     "result": {
+      "holder": "Sanna Koskinen",
+      "active": true,
+      "covers": [
+       "home",
+       "theft"
+      ],
+      "deductible": 100,
+      "coverage_limit": 5000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-300811",
+      "incident_date": "2026-10-15"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "Estimate exceeds coverage limit",
+    "Amount above EUR 5000"
+   ]
+  },
+  {
+   "id": 67,
+   "source_file": "claim10.txt",
+   "created_at": "2026-10-28T12:26:19",
+   "policy_number": "LT-482913",
+   "incident_date": "2026-09-30",
+   "action": "manual_review",
+   "payout": null,
+   "draft": "Aihe: Vahinkoilmoituksen vastaanotto\n\nHyvä Mika Virtanen,\n\nKiitos vahinkoilmoituksestasi. Olemme vastaanottaneet ilmoituksesi ajoneuvovahingosta ja se tulee käsittelyyn. Otamme sinuun yhteyttä pian lisätietojen ja seuraavien vaiheiden osalta.\n\nJos sinulla on kysymyksiä, älä epäröi ottaa meihin yhteyttä.\n\nYstävällisin terveisin,  \nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "fi",
+    "claim_type": "vehicle",
+    "customer_name": "Mika Virtanen",
+    "policy_number": "LT-482913",
+    "incident_date": "2026-09-30",
+    "estimated_amount_eur": 1200.0,
+    "description": "Incident in a shopping centre car park in Vantaa. Long scratch and a dent on the left door of the car. No note on the windshield and security camera footage has been requested.",
+    "urgency": "medium",
+    "injection_suspected": true
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-482913"
+     },
+     "result": {
+      "holder": "Mika Virtanen",
+      "active": true,
+      "covers": [
+       "vehicle"
+      ],
+      "deductible": 300,
+      "coverage_limit": 20000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-482913",
+      "incident_date": "2026-09-30"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "Email contains instructions aimed at the system (possible prompt injection)"
+   ]
+  },
+  {
+   "id": 68,
+   "source_file": "claim11.txt",
+   "created_at": "2026-10-28T12:26:24",
+   "policy_number": "LT-771204",
+   "incident_date": "2026-10-14",
+   "action": "policy_issue",
+   "payout": null,
+   "draft": "Subject: Acknowledgment of Your Claim Submission\n\nDear Aino Laine,\n\nThank you for submitting your vehicle claim. We have received your claim and will begin the review process shortly.\n\nOur team will contact you if we need any further information or to provide updates regarding your claim.\n\nIf you have any questions in the meantime, please feel free to reach out.\n\nBest regards,\n\nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "vehicle",
+    "customer_name": "Aino Laine",
+    "policy_number": "LT-771204",
+    "incident_date": "2026-10-14",
+    "estimated_amount_eur": 650.0,
+    "description": "Someone scratched my car in the office parking lot.",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-771204"
+     },
+     "result": {
+      "holder": "Aino Laine",
+      "active": true,
+      "covers": [
+       "home"
+      ],
+      "deductible": 500,
+      "coverage_limit": 100000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-771204",
+      "incident_date": "2026-10-14"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "Claim type 'vehicle' is not covered by this policy"
+   ]
+  },
+  {
+   "id": 69,
+   "source_file": "claim12.txt",
+   "created_at": "2026-10-28T12:26:28",
+   "policy_number": "LT-482913",
+   "incident_date": "2026-10-18",
+   "action": "fraud_review",
+   "payout": null,
+   "draft": "Subject: Acknowledgment of Your Claim Submission\n\nDear Laura Mäkinen,\n\nThank you for submitting your vehicle claim. We have received your information and will begin the review process shortly.\n\nOur team will reach out to you if we need any further details or updates regarding your claim.\n\nThank you for your patience.\n\nBest regards,  \nClaims Team",
+   "status": "pending",
+   "claim": {
+    "language": "en",
+    "claim_type": "vehicle",
+    "customer_name": "Laura Mäkinen",
+    "policy_number": "LT-482913",
+    "incident_date": "2026-10-18",
+    "estimated_amount_eur": 2400.0,
+    "description": "I was driving my friend's car and hit a bollard.",
+    "urgency": "medium",
+    "injection_suspected": false
+   },
+   "trace": [
+    {
+     "step": 1,
+     "tool": "lookup_policy",
+     "args": {
+      "policy_number": "LT-482913"
+     },
+     "result": {
+      "holder": "Mika Virtanen",
+      "active": true,
+      "covers": [
+       "vehicle"
+      ],
+      "deductible": 300,
+      "coverage_limit": 20000
+     }
+    },
+    {
+     "step": 1,
+     "tool": "check_duplicate_claims",
+     "args": {
+      "policy_number": "LT-482913",
+      "incident_date": "2026-10-18"
+     },
+     "result": {
+      "duplicates": []
+     }
+    }
+   ],
+   "reasons": [
+    "Claimant 'Laura Mäkinen' does not match policy holder"
+   ]
+  }
+ ],
+ "support": [
+  {
+   "id": 26,
+   "created_at": "2026-10-28T12:26:31",
+   "question": "Can I paste a customer's policy number into a public AI tool?",
+   "answer": "No, you should never paste customer personal data, health information or policy numbers into public AI tools.",
+   "sources_json": "[\"AI Usage Policy > Prohibited data\"]",
+   "escalated": 0,
+   "top_score": 0.6522427816844747,
+   "feedback": "up"
+  },
+  {
+   "id": 27,
+   "created_at": "2026-10-28T12:26:32",
+   "question": "How do I request a new automation?",
+   "answer": "To request a new automation, you need to submit an idea using the Automation Request form. Describe the process, how often it runs, and how long each case takes.",
+   "sources_json": "[\"Requesting an Automation > Step 1: Submit an idea\"]",
+   "escalated": 0,
+   "top_score": 0.716080014267734,
+   "feedback": "up"
+  },
+  {
+   "id": 28,
+   "created_at": "2026-10-28T12:26:33",
+   "question": "What is the office wifi password?",
+   "answer": "I couldn't find a reliable answer in the knowledge base, so I've passed your question to the AI Support team.",
+   "sources_json": "[]",
+   "escalated": 1,
+   "top_score": 0.22086340062864973,
+   "feedback": null
+  }
+ ],
+ "requests": [
+  {
+   "id": 1,
+   "created_at": "2026-10-28T12:26:36",
+   "title": "Claims email intake",
+   "description": "Claims handlers read about 1,200 claim emails per month. For each one they copy the customer name, policy number, date and estimated amount into the claims system, check the policy and decide which queue it goes to. This takes about 6 minutes per email. Emails are free text, some in Finnish.",
+   "manual_hours": 120.0,
+   "priority": 7.2,
+   "priority_label": "High",
+   "assessment": {
+    "process_name": "Claims Email Intake",
+    "summary": "Claims handlers process approximately 1,200 claim emails monthly, extracting key information and categorizing them into the claims system.",
+    "volume_per_month": 1200,
+    "minutes_per_case": 6.0,
+    "input_type": "unstructured_text",
+    "rule_based": false,
+    "needs_language_understanding": true,
+    "involves_personal_data": true,
+    "error_impact": "medium",
+    "recommended_approach": "hybrid",
+    "rationale": "The process involves extracting structured data from unstructured emails and requires decision-making based on policy checks, making it suitable for a hybrid approach.",
+    "risks": [
+     "Misinterpretation of email content due to language differences",
+     "Incorrect categorization of claims leading to delays",
+     "Data entry errors affecting customer service",
+     "Processes personal data: privacy (GDPR) review needed before any pilot."
+    ],
+    "next_steps": [
+     "Evaluate existing email processing tools",
+     "Assess language processing capabilities for Finnish",
+     "Determine integration needs with claims system",
+     "Pilot with a human reviewing every output before any action is taken."
+    ],
+    "clarifying_questions": [
+     "What percentage of emails are in Finnish versus other languages?",
+     "Are there specific rules for categorizing claims into queues?",
+     "What is the current error rate in manual processing?"
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "created_at": "2026-10-28T12:26:39",
+   "title": "Monthly management report",
+   "description": "Every month three analysts copy figures from 5 Excel files into a PowerPoint management report and check the totals. There are 12 such reports per month and each takes about 90 minutes. The Excel layout is always the same.",
+   "manual_hours": 18.0,
+   "priority": 4.2,
+   "priority_label": "Low",
+   "assessment": {
+    "process_name": "Monthly Management Report",
+    "summary": "Analysts compile monthly management reports by copying figures from Excel files into PowerPoint presentations, ensuring totals are accurate.",
+    "volume_per_month": 12,
+    "minutes_per_case": 90.0,
+    "input_type": "structured",
+    "rule_based": true,
+    "needs_language_understanding": false,
+    "involves_personal_data": false,
+    "error_impact": "medium",
+    "recommended_approach": "rpa",
+    "rationale": "The process is structured and rule-based, involving repetitive tasks of copying data from Excel to PowerPoint with a consistent layout.",
+    "risks": [
+     "Potential for human error in data copying",
+     "Inaccurate totals if not checked properly"
+    ],
+    "next_steps": [
+     "Implement RPA to automate data extraction and report generation",
+     "Test the RPA solution for accuracy and reliability"
+    ],
+    "clarifying_questions": [
+     "Are there any variations in the Excel files that could affect the automation?",
+     "What specific checks are performed on the totals?"
+    ]
+   }
+  },
+  {
+   "id": 3,
+   "created_at": "2026-10-28T12:26:42",
+   "title": "Customer feedback categorisation",
+   "description": "We receive about 800 free-text customer feedback messages per month. An assistant reads each one, tags topic and sentiment, and forwards complaints to the right team. It takes roughly 3 minutes per message.",
+   "manual_hours": 40.0,
+   "priority": 4.2,
+   "priority_label": "Low",
+   "assessment": {
+    "process_name": "Customer Feedback Categorisation",
+    "summary": "The process involves categorizing customer feedback messages by tagging their topics and sentiments, and forwarding complaints to the appropriate team.",
+    "volume_per_month": 800,
+    "minutes_per_case": 3.0,
+    "input_type": "unstructured_text",
+    "rule_based": false,
+    "needs_language_understanding": true,
+    "involves_personal_data": true,
+    "error_impact": "medium",
+    "recommended_approach": "genai_extraction",
+    "rationale": "The process involves unstructured text that requires language understanding to extract structured data (topics and sentiments) from customer feedback messages.",
+    "risks": [
+     "Misclassification of feedback leading to unresolved issues",
+     "Inaccurate sentiment analysis affecting customer satisfaction",
+     "Processes personal data: privacy (GDPR) review needed before any pilot."
+    ],
+    "next_steps": [
+     "Evaluate existing tools for text analysis",
+     "Consider implementing a GenAI extraction solution",
+     "Train the model on historical feedback data",
+     "Pilot with a human reviewing every output before any action is taken."
+    ],
+    "clarifying_questions": [
+     "What specific topics and sentiments need to be tagged?",
+     "Are there any existing guidelines for categorizing feedback?",
+     "How are complaints currently prioritized for forwarding?"
+    ]
+   }
+  },
+  {
+   "id": 4,
+   "created_at": "2026-10-28T12:26:45",
+   "title": "Complex fire-risk exceptions",
+   "description": "Senior underwriters decide whether to accept unusual fire-risk exceptions for large farms. About 15 cases per month, each takes 2 hours and depends on site visits and judgement. Wrong decisions are very costly.",
+   "manual_hours": 30.0,
+   "priority": 0.0,
+   "priority_label": "Not recommended",
+   "assessment": {
+    "process_name": "Complex Fire-Risk Exceptions",
+    "summary": "Senior underwriters evaluate and decide on unusual fire-risk exceptions for large farms, requiring site visits and expert judgement.",
+    "volume_per_month": 15,
+    "minutes_per_case": 120.0,
+    "input_type": "structured",
+    "rule_based": false,
+    "needs_language_understanding": false,
+    "involves_personal_data": true,
+    "error_impact": "high",
+    "recommended_approach": "not_suitable",
+    "rationale": "The process involves high-judgement decisions based on site visits and expert analysis, making it unsuitable for automation.",
+    "risks": [
+     "High financial impact from incorrect decisions",
+     "Potential for increased liability",
+     "Dependence on expert judgement may lead to inconsistencies",
+     "Processes personal data: privacy (GDPR) review needed before any pilot."
+    ],
+    "next_steps": [
+     "Evaluate the need for additional training for underwriters",
+     "Consider implementing a decision support tool for underwriters",
+     "Review the criteria for fire-risk exceptions"
+    ],
+    "clarifying_questions": [
+     "What specific criteria are used to evaluate fire-risk exceptions?",
+     "How often do underwriters encounter unusual cases?",
+     "What data is collected during site visits?"
+    ]
+   }
+  }
+ ]
+}
