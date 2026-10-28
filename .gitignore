@@ -1,0 +1,5 @@
+.venv/
+claims.db
+data/kb_cache.json
+__pycache__/
+.env

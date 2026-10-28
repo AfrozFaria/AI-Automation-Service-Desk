@@ -1,0 +1,6 @@
+{
+    "LT-482913": {"holder": "Mika Virtanen", "active": true, "covers": ["vehicle"], "deductible": 300, "coverage_limit": 20000},
+    "LT-771204": {"holder": "Aino Laine", "active": true, "covers": ["home"], "deductible": 500, "coverage_limit": 100000},
+    "LT-300811": {"holder": "Sanna Koskinen", "active": true, "covers": ["home", "theft"], "deductible": 100, "coverage_limit": 5000},
+    "LT-100555": {"holder": "Jukka Nieminen", "active": false, "covers": ["vehicle"], "deductible": 300, "coverage_limit": 20000}
+  }
